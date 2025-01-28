@@ -1,0 +1,1 @@
+minium time to cover distance by given transport
