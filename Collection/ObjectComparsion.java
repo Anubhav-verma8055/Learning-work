@@ -19,7 +19,7 @@ class Student {
 
     @Override
     public String toString() {
-        return "Student{name=" + " "+ name + "age" + " "+ age + " " +"grade=" + grade + "}";
+        return "Student{name=" + " "+ name + "  " + "age" + " "+ age + " " +"grade=" + grade + " " + "}";
     }
 }
 
@@ -40,12 +40,50 @@ class Teacher implements Comparable<Teacher> {
     public int compareTo(Teacher other) {
 
         //  // First, compare by name
-        int nameComparison = CharSequence.compare(this.name,other.name);
-      //  int nameComparison = this.name.compareTo(other.name);
-        if (nameComparison != 0) {
-            return nameComparison;
+
+        //Method 1 : Using compare method to compare  students based on their name attribute
+       // int nameComparison = CharSequence.compare(this.name,other.name);
+
+        //method 5 : using compareTo method
+        //int nameComparison = this.name.compareTo(other.name);
+
+        //        if (nameComparison != 0) {
+        //        return nameComparison;
+        //        }
+
+
+        //Method 2 : using the char based comparison - iterate over character to check difference
+//        int minLength = Math.min(this.name.length(), other.name.length());
+//
+//        for(int i =0;i< minLength;i++) {
+//         int charComparison = this.name.charAt(i) - other.name.charAt(i);
+//            if (charComparison != 0) {
+//                return charComparison;
+//            }
+//        }
+
+        //Method 3
+//        if(this.name != other.name) {
+//            for (int i = 0; i <= 1; i++) {
+//                return this.name.charAt(i) - other.name.charAt(i);
+//            }
+//        }
+
+        //method 4 : - using charArray
+        if(this.name != other.name) {
+           char t[] = this.name.toCharArray();
+           char o[] = other.name.toCharArray();
+            for (int i = 0; i < Math.min(t.length, o.length); i++) {
+            if (t[i] != o[i]) {
+                return t[i] - o[i];
+            }
         }
 
+        // If all compared characters are the same, the shorter name comes first
+        return t.length - o.length;
+        }
+        //return this.name.length() - other.name.length();
+//
         // If names are equal, compare by age
         if (this.age != other.age) {
             return Integer.compare(this.age, other.age);
@@ -57,10 +95,10 @@ class Teacher implements Comparable<Teacher> {
 
     }
 
-    @Override
-    public String toString() {
-        return "Teacher{name='" + name + "age" + age+" salary=" + salary + "}";
-    }
+        @Override
+        public String toString() {
+            return "Teacher{name='" + name + " " + "', age=" + age + " " + ", salary=" + salary + " " +"}";
+        }
 }
 
 class NameComparator implements Comparator<Student> {
@@ -115,17 +153,22 @@ class NameComparator implements Comparator<Student> {
             teachers.add(new Teacher("Anil", 15, 10000));
             teachers.add(new Teacher("Bhanu", 15, 75));
             teachers.add(new Teacher("Anil", 16, 85));
+            teachers.add(new Teacher("Harsh", 15, 100));
+            teachers.add(new Teacher("Hrithik", 20, 75000));
+            teachers.add(new Teacher("Harsh", 19, 100));
 
             // Sort students by name using a custom comparator
             // Collections.sort(students, new NameComparator());
-            Collections.sort(SameStudents, new SameObjectComparartor());
+          //  Collections.sort(SameStudents, new SameObjectComparartor());
 
-            // Collections.sort(teachers);
+             Collections.sort(teachers);
 
 
             // Print sorted list by name
-            System.out.println("Sorted Students by Name: " + SameStudents);
-            // System.out.println("Sorted Students by Name: " + teachers);
+           // System.out.println("Sorted Students by Name: " + SameStudents);
+            for(Teacher teacher : teachers ) {
+                System.out.println("Sorted Students by Name: " + teacher);
+            }
         }
     }
 
