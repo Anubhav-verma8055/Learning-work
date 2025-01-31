@@ -8,6 +8,7 @@ import java.util.Comparator;
 import java.util.List;
 
 public class StaticBlock  {
+
     static ArrayList<Integer> numbers = new ArrayList<>();
 
     static class Teachers implements Comparable<Teachers>{
@@ -143,10 +144,15 @@ public class StaticBlock  {
 
         Collections.sort(teachers);
         teachers.forEach(System.out::println);
+
+        // In a static block, you can also call the static method of a subclass
+//        Operation op = new Work();
+//        op.performOperation(); //
     }
 
     public static void main(String[] args) {
-
+//      Operation.performOperation();
+//      Work.performOperation();
     }
 
     static class Operation{
@@ -158,5 +164,17 @@ public class StaticBlock  {
         public int mathematicalOperation(int a,int b) {
             return 0;
         }
+
+//        static void performOperation() {
+//            System.out.println(" Parent's static method");
+//        }
     }
+
+//    static class Work extends Operation{
+//
+//         static void performOperation() {
+//            System.out.println("child's static methods");
+//        }
+//
+//    }
 }
