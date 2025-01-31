@@ -7,13 +7,12 @@ public class FunctionalInterfacArea {
 
           AreaInterface squareArea = (dimensions) -> dimensions[0] * dimensions[0];
 
-
-         AreaInterface rectangleArea = (dimensions) -> dimensions[0] * dimensions[1];
+          AreaInterface rectangleArea = (dimensions) -> dimensions[0] * dimensions[1];
 
 
           AreaInterface triangleArea = (dimensions) ->  (dimensions[0] * dimensions[1])/2;
 
-          AreaInterface circleArea = (dimensions) -> 3.14 * dimensions[0];
+          AreaInterface circleArea = (dimensions) -> 3.14 * dimensions[0] * dimensions[0];
 
 
           FunctionalInterfacArea calculator = new FunctionalInterfacArea();
